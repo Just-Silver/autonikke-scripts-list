@@ -1,0 +1,106 @@
+{
+  "formatVersion": 1,
+  "id": "5a0d6689050d4c4994adc0191745a9d9",
+  "name": "环境自检（示例）",
+  "version": "1.0.0",
+  "description": "离线可运行的环境自检示例：开始 → 截图 → 是否存在 demo-marker → 是则点击模板、否则记录日志 → 结束。",
+  "author": "AutoNikke",
+  "minAppVersion": "0.1.0",
+  "updatedAt": "2026-09-28T00:00:00+00:00",
+  "tags": [
+    "示例",
+    "自检"
+  ],
+  "nodes": [
+    {
+      "type": "start",
+      "id": "80665187388e429c851fc362aad0caa4",
+      "title": "开始",
+      "x": 40,
+      "y": 200,
+      "enabled": true
+    },
+    {
+      "type": "capture",
+      "waitMs": 100,
+      "id": "d25206814a9442aebce9adebadcf2164",
+      "title": "截图",
+      "x": 240,
+      "y": 200,
+      "enabled": true
+    },
+    {
+      "type": "existsCondition",
+      "template": "templates/demo-marker.png",
+      "threshold": 0.8,
+      "id": "780522de384e4650bac3cbdfdd1e6955",
+      "title": "是否存在",
+      "x": 460,
+      "y": 200,
+      "enabled": true
+    },
+    {
+      "type": "clickTemplate",
+      "template": "templates/demo-marker.png",
+      "threshold": 0.8,
+      "offsetX": 0,
+      "offsetY": 0,
+      "failWhenMissing": false,
+      "id": "bf675b267de24905a5ce154f89649a76",
+      "title": "点击模板",
+      "x": 700,
+      "y": 100,
+      "enabled": true
+    },
+    {
+      "type": "log",
+      "message": "未找到 demo-marker 标记（占位模板不匹配真实画面，属预期）",
+      "id": "258f80082f484ddbb17d1a1d5d73b6c8",
+      "title": "日志",
+      "x": 700,
+      "y": 320,
+      "enabled": true
+    },
+    {
+      "type": "end",
+      "id": "422d2afa860c4922a0bbebede5eb5d9f",
+      "title": "结束",
+      "x": 940,
+      "y": 200,
+      "enabled": true
+    }
+  ],
+  "connections": [
+    {
+      "fromNodeId": "80665187388e429c851fc362aad0caa4",
+      "fromPort": "下一步",
+      "toNodeId": "d25206814a9442aebce9adebadcf2164"
+    },
+    {
+      "fromNodeId": "d25206814a9442aebce9adebadcf2164",
+      "fromPort": "下一步",
+      "toNodeId": "780522de384e4650bac3cbdfdd1e6955"
+    },
+    {
+      "fromNodeId": "780522de384e4650bac3cbdfdd1e6955",
+      "fromPort": "是",
+      "toNodeId": "bf675b267de24905a5ce154f89649a76"
+    },
+    {
+      "fromNodeId": "780522de384e4650bac3cbdfdd1e6955",
+      "fromPort": "否",
+      "toNodeId": "258f80082f484ddbb17d1a1d5d73b6c8"
+    },
+    {
+      "fromNodeId": "bf675b267de24905a5ce154f89649a76",
+      "fromPort": "下一步",
+      "toNodeId": "422d2afa860c4922a0bbebede5eb5d9f"
+    },
+    {
+      "fromNodeId": "258f80082f484ddbb17d1a1d5d73b6c8",
+      "fromPort": "下一步",
+      "toNodeId": "422d2afa860c4922a0bbebede5eb5d9f"
+    }
+  ],
+  "startNodeId": "80665187388e429c851fc362aad0caa4"
+}
