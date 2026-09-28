@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "id": "5a0d6689050d4c4994adc0191745a9d9",
   "name": "环境自检（示例）",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "离线可运行的环境自检示例：开始 → 截图 → 是否存在 demo-marker → 是则点击模板、否则记录日志 → 结束。",
   "author": "AutoNikke",
   "minAppVersion": "0.1.0",
